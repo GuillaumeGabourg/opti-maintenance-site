@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Opti'Maintenance Industrie">
+  <!-- Provisoire : redessin simplifié du logo vu sur Facebook, à remplacer par le fichier original HD -->
+  <circle cx="32" cy="32" r="31" fill="#0d0f10"/>
+  <g fill="#8cc63f">
+    <rect x="29" y="7" width="6" height="8" rx="1"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(45 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(90 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(135 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(180 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(225 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(270 32 32)"/>
+    <rect x="29" y="7" width="6" height="8" rx="1" transform="rotate(315 32 32)"/>
+  </g>
+  <g fill="none" stroke="#8cc63f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="17"/>
+    <circle cx="32" cy="32" r="10"/>
+    <path d="M32 22v6M27 36l-3 3M37 36l3 3M42 32h-4"/>
+  </g>
+  <g fill="#8cc63f">
+    <circle cx="32" cy="30" r="2.2"/><circle cx="23.5" cy="39.5" r="2"/><circle cx="40.5" cy="39.5" r="2"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+# Fichiers de travail locaux
+.claude/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/
+.impeccable/config.local.json
+Thumbs.db
+.DS_Store
+.impeccable/questions/
