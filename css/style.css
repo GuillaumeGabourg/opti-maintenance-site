@@ -122,6 +122,8 @@ h1 em{font-style:normal;color:var(--run)}
 .band-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
 .band h2{font-stretch:66%;font-weight:800;font-size:clamp(38px,4.4vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.005em;text-wrap:balance}
 .band-head p{color:var(--ink-2);font-size:18px;max-width:46ch}
+#contact .band-head{display:block}
+#contact .band-head p{margin-top:18px;max-width:none;text-wrap:balance}
 
 /* domaines */
 .plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
