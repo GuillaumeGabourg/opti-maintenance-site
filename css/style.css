@@ -45,7 +45,6 @@ a{color:inherit;text-underline-offset:4px}
 .skip{position:absolute;left:-999px;top:8px;background:var(--run);color:var(--run-ink);padding:10px 16px;z-index:100;font-weight:700;border-radius:var(--pill)}
 .skip:focus{left:8px}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--run);flex-shrink:0}
 
 /* ---------- en-tête flottant ---------- */
 .top{position:sticky;top:12px;z-index:50;display:flex;align-items:center;gap:20px;height:64px;margin:12px var(--gut) 0;padding:0 10px 0 16px;background:rgba(27,31,34,.86);border:1px solid var(--seam);border-radius:var(--pill);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);transition:background .3s,box-shadow .3s}
@@ -138,8 +137,6 @@ h1 em{font-style:normal;color:var(--run)}
 .plate-id::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--run)}
 .plate h3{margin:22px 12px 0;font-stretch:70%;font-weight:800;font-size:28px;line-height:1;text-transform:uppercase}
 .plate-what{margin:12px 12px 0;color:var(--ink-2);font-size:16px}
-.ops{margin:auto 12px 0;padding-top:22px;display:flex;flex-wrap:wrap;gap:6px}
-.ops li{font-stretch:85%;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--panel-2);border-radius:var(--pill);padding:5px 12px}
 
 /* secteurs : conduite et stations */
 .line{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}

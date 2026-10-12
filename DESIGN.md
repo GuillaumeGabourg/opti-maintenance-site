@@ -59,12 +59,6 @@ typography:
     fontWeight: 400
     lineHeight: 1.5
     fontVariation: "'wdth' 100"
-  standfirst:
-    fontFamily: "Archivo, Arial Narrow, sans-serif"
-    fontSize: "18px"
-    fontWeight: 400
-    lineHeight: 1.5
-    fontVariation: "'wdth' 100"
   body:
     fontFamily: "Archivo, Arial Narrow, sans-serif"
     fontSize: "17px"
@@ -102,6 +96,13 @@ typography:
     lineHeight: 1.5
     letterSpacing: "0.06em"
     fontVariation: "'wdth' 85"
+  label-sm:
+    fontFamily: "Archivo, Arial Narrow, sans-serif"
+    fontSize: "12px"
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: "0.05em"
+    fontVariation: "'wdth' 85"
   mono-value:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: "clamp(30px, 3vw, 40px)"
@@ -118,7 +119,11 @@ rounded:
   sm: "10px"
   md: "16px"
   lg: "28px"
+  lg-mobile: "22px"
+  nested: "20px"
+  nested-mobile: "14px"
   sheet: "44px"
+  sheet-mobile: "32px"
   pill: "999px"
   full: "50%"
 spacing:
@@ -127,6 +132,7 @@ spacing:
   md: "16px"
   lg: "24px"
   xl: "32px"
+  touch: "44px"
   gutter: "clamp(16px, 4vw, 56px)"
   band-top: "clamp(72px, 10vw, 128px)"
   band-bottom: "clamp(96px, 12vw, 160px)"
@@ -165,7 +171,8 @@ components:
     textColor: "{colors.ink-2}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
-    padding: "9px 16px"
+    height: "44px"
+    padding: "0 16px"
   nav-pill:
     backgroundColor: "{colors.panel-2}"
     rounded: "{rounded.pill}"
@@ -210,12 +217,9 @@ components:
     typography: "{typography.mono-tag}"
     rounded: "{rounded.pill}"
     padding: "6px 12px"
-  op-chip:
-    backgroundColor: "{colors.panel-2}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.pill}"
-    padding: "5px 12px"
+  field-error:
+    textColor: "{colors.warn}"
+    typography: "{typography.small}"
   value-card:
     backgroundColor: "{colors.panel}"
     textColor: "{colors.ink}"
@@ -260,15 +264,16 @@ components:
 
 The site reads like the operator touch panel of a modern installation: a graphite ground, soft-cornered tiles sized for a thumb, pill controls, and a state vocabulary so small it reads at a glance. Inside it sit the technician's own field photographs (a cogeneration set, a belt transmission, a sensor, a drive motor, a PLC program, a diagnostic curve), framed in rounded tiles and tagged with equipment codes. What is lit green is what Malo covers or what you can do next. Everything that is not state stays grey.
 
-The panel is calm and tactile rather than square and technical. Sections stack like sheets sliding over one another; cards rise when touched; the header floats as a pill above the page. Colour is never decoration. Motion is the panel coming to life: the header drops in, the hero photo opens out of a rounded inset, the headline rises line by line, cards arrive in a short wave, the process pipe fills. It all disappears under reduced motion.
+The panel is calm and tactile rather than square and technical. Sections stack like sheets sliding over one another; cards rise when touched; the header floats as a pill above the page. Colour is never decoration. Motion is the panel coming to life, once: the header drops in, the hero photo opens out of a rounded inset, the headline rises line by line, cards arrive in a short wave, the process line fills green. Nothing loops. It all disappears under reduced motion.
 
 The world refuses the start-up register (neon, glow, gadget effects) and the anonymous trades site (stock photos, icon cards). It is a technician's panel, dark, soft-edged and exact, showing real work.
 
 **Key Characteristics:**
 - Graphite ground with four close tonal steps; 1px seams edge every tile.
-- One-bit state colour: green means running / my domain / live feedback / primary action; amber means urgency or fault.
+- One-bit state colour: green means running / my domain / live feedback / primary action; amber means urgency or fault. Static facts carry no lamp.
 - Real field photography only, in rounded tiles, tagged with mono equipment codes on blurred pills.
-- A five-step radius scale: 10px fields, 16px inner items, 28px tiles, 44px sheets, pills for everything pressed or tagged.
+- A role-based radius scale: 10px fields, 16px inner items, 28px tiles (22px on phones), 44px sheets (32px on phones), pills for everything pressed or tagged.
+- Every touch target is at least 44px tall.
 - Archivo variable width: compressed caps (66–72% width) for display and titles, 85% for labels, 100% for reading.
 - JetBrains Mono only for phone numbers, measured values and equipment codes.
 - One shared lift shadow for what floats or is touched; no other shadows.
@@ -278,28 +283,28 @@ The world refuses the start-up register (neon, glow, gadget effects) and the ano
 A locked graphite-and-signal palette: neutrals carry the whole surface, and two signal hues each own exactly one meaning.
 
 ### Primary
-- **Running Green** (`run`): the "marche" state. Status lamps, equipment-code tags, sector stations once lit, the pipe flow, the reading-progress line, the short bar heading each value card, focus rings and the input focus halo, selection, acting links, and the fill of every primary call/submit button. Its text partner is **Run Ink** (`run-ink`), never white.
+- **Running Green** (`run`): the "marche" state. The lamp on each covered domain's equipment-code tag, sector stations once lit, the process line, the reading-progress line, the short bar heading each value card, focus rings and the input focus halo, selection, acting links, and the fill of every primary call/submit button. Its text partner is **Run Ink** (`run-ink`), never white.
 - **Running Green, Pressed Up** (`run-hover`): the hover step of a green-filled button. Nowhere else.
 - **Dim Run** (`run-dim`): green at rest; the border a value card takes on hover.
 - **Run Tint** (`run-tint`): the background of a targeted domain card, a checked choice, and the success message.
 
 ### Secondary
-- **Alarm Amber** (`warn`): the "défaut / urgence" state. The amber lamp and phone number in the alarm strip, the direct-line panel's frame (amber at 45%) and its annunciator pill, invalid field borders, and the error message frame. Amber may sit behind its own text as a 10–20% tint pill (the phone link, the annunciator); that tint is still urgency, never a highlight elsewhere.
+- **Alarm Amber** (`warn`): the "défaut / urgence" state. The amber lamp and phone number in the alarm strip, the direct-line panel's frame (amber at 45%) and its annunciator pill, invalid field borders, the error line under each invalid field, and the error message frame. Amber may sit behind its own text as a 10–20% tint pill (the phone link, the annunciator); that tint is still urgency, never a highlight elsewhere.
 
 ### Neutral
 - **Graphite Ground** (`ground`): the page and every section sheet, input wells, and (at 82% with blur) the pills laid over photos.
 - **Graphite Raised** (`ground-2`): alternating sheets, the header (86% at rest, 94% once scrolled, 97% for the open mobile menu), the alarm strip, unchecked choices.
 - **Panel** (`panel`): every tile: domain cards, value cards, the direct-line panel, the form panel, stations, and the placeholder behind a loading photo.
-- **Panel Raised** (`panel-2`): what sits on or slides over a tile: the nav pill, op chips, the outline button's hover fill, the menu button, the current item in the mobile menu.
-- **Seam** (`seam`): every 1px tile and sheet edge (decorative, 1.25:1 on Panel); the empty process pipe; unlit station rims. Never the only boundary of a control.
+- **Panel Raised** (`panel-2`): what sits on or slides over a tile: the nav pill, the outline button's hover fill, the menu button, the current item in the mobile menu.
+- **Seam** (`seam`): every 1px tile and sheet edge (decorative, 1.25:1 on Panel); the 6px track under the process line; unlit station rims. Never the only boundary of a control.
 - **Pipe Grey** (`line`): the secondary button outline, the hover edge of domain cards, unlit station symbols.
 - **Control Edge** (`edge`): the resting 1px boundary of every field and choice pill (3.8:1 on Panel, 4.2:1 on Graphite Raised), so controls meet the 3:1 non-text minimum. Hover steps it to Readout Grey.
 - **Placeholder Grey** (`placeholder`): placeholder text in fields (4.9:1 on Ground). Never for real content.
-- **Screen Ink** (`ink`): headings, button text, field values, caption text.
+- **Screen Ink** (`ink`): headings, button text, field values, caption text, the required-field asterisk, footer phone and email.
 - **Readout Grey** (`ink-2`): body copy, ledes, labels, inactive nav (6.6:1 on Panel, 7.6:1 on Ground).
 
 ### Named Rules
-**The One-Bit Rule.** Green is a state, not a brand accent. It marks what is running, what Malo covers, live system feedback (progress, focus), or the action to take. If an element is none of these, it is grey.
+**The One-Bit Rule.** Green is a state, not a brand accent. It marks what is running, what Malo covers, live system feedback (progress, focus), or the action to take. If an element is none of these, it is grey. A green lamp means running or live; static facts (location, photo captions) never carry one.
 
 **The Alarm Rule.** Amber appears only where something is urgent or wrong: the emergency line and a fault. Never as a highlight, a category colour, or a second accent.
 
@@ -315,17 +320,18 @@ A locked graphite-and-signal palette: neutrals carry the whole surface, and two 
 
 ### Hierarchy
 - **Display** (800, wdth 66, clamp(52px, 5vw, 84px), lh 0.92, uppercase): the single hero statement, one masked line per phrase so it can rise line by line. **Display Mobile** (clamp(44px, 12.5vw, 60px)) at 640px and below. The last word turns Running Green.
-- **Headline** (800, wdth 66, clamp(38px, 4.4vw, 64px), lh 0.95, uppercase, balanced wrap): one per sheet, paired with a **Standfirst** (18px, Readout Grey, 46ch) in a 7/5 split.
+- **Headline** (800, wdth 66, clamp(38px, 4.4vw, 64px), lh 0.95, uppercase, balanced wrap): one per sheet, paired with a Body Large standfirst (19px, Readout Grey, 46ch) in a 7/5 split.
 - **Title** (800, wdth 70, 28px, lh 1, uppercase): domain card names and sector station names.
 - **Title Small** (800, wdth 72, 24px, lh 1.05, +0.02em, uppercase): value card names, legal-page subheads.
-- **Body Large** (19px): the hero lede (clamp from 17px, 42ch), the about prose (56ch), the technician's name in the direct line (700).
+- **Body Large** (19px): every lead and standfirst: the hero lede (clamp from 17px, 42ch), the sheet standfirsts (46ch), the about prose (56ch), and the technician's name in the direct line (700).
 - **Body** (400, wdth 100, 17px, lh 1.5): default running text and field values.
 - **Body Small** (16px): domain and value descriptions, the alarm strip (15px on phones).
 - **UI** (15px): choice labels, form messages, the compact call and the numeral inside the call button.
-- **Small** (14px): footer, consent note, mobile menu items.
+- **Small** (14px): footer, consent note, the required-fields note, field error lines (amber), mobile menu items.
 - **Button** (700, wdth 90, 17px).
-- **Label** (600, wdth 85, 13px, +0.04–0.07em, uppercase): nav links, field labels and legends, op chips, photo captions, the annunciator, the zone line.
-- **Mono value** (600, tabular): the direct-line phone number (clamp(30px, 3vw, 40px)); at text size for the alarm-strip and button phone numbers.
+- **Label** (600, wdth 85, 13px, +0.04–0.07em, uppercase): nav links, field labels and legends, photo captions, the annunciator, the zone line. The "(facultatif)" marker inside a label drops to sentence case, full width, regular weight.
+- **Label Small** (12px): the hero caption pill on phones.
+- **Mono value** (600, tabular): the direct-line phone number (clamp(30px, 3vw, 40px)); at text size for every other phone number (header call, hero button, alarm strip, footer, mobile call bar).
 - **Mono tag** (600, 12px, +0.1em): equipment codes (MÉCA, ÉLEC, VAR, AUTO).
 
 ### Named Rules
@@ -341,13 +347,15 @@ The first viewport is two tiles side by side: copy at 6fr (min 380px), verticall
 
 Sections are **sheets**: full-width Graphite Ground or Graphite Raised blocks with 44px rounded top corners (32px on phones) and a 1px Seam along the top, each pulled up by its own corner radius so it slides over the bottom of the one before. Sheets pad `band-top` (72–128px) above and the larger `band-bottom` (96–160px) below, so the overlap never eats content. The footer is the last sheet. Each sheet opens with a 7/5 headline-and-standfirst row aligned to the baseline.
 
-Collections are separate tiles with a 12–20px gap: four domain cards (two below 1180px, one below 640px); three value cards under the about prose beside a portrait photo; the direct-line panel (sticky while the form scrolls, 4fr) beside the form panel (7fr).
+Collections are separate tiles with a 12–20px gap: four domain cards (two columns below 1180px; below 640px a horizontal scroll-snap strip with cards at 82% width bleeding to the screen edge, hover lift off); three value cards under the about prose beside a portrait photo; the direct-line panel (sticky while the form scrolls, 4fr) beside the form panel (7fr).
 
 Recurring gaps step 8 / 12 / 16 / 24 / 32px; larger column gaps (40–72px) only between sheet columns.
 
-Responsive: at 1180px the status readout drops, domain cards go to two columns and value cards stack; at 960px navigation collapses behind a Menu pill into a dropdown tile under the header (28px radius, lift shadow, 16px-radius items), every split becomes one column, the hero photo moves below the copy at 4:3, the direct line stops being sticky, and the process line turns vertical; at 640px radii step down (tiles 22px, sheets 32px), the hero photo becomes 4:5, actions stack full-width, the alarm strip becomes a 22px tile, and a fixed green call pill appears at the bottom once the hero call button has scrolled away.
+Responsive: at 1180px the status readout drops, domain cards go to two columns and value cards stack; at 960px navigation collapses behind a Menu pill into a dropdown tile under the header (28px radius, lift shadow, 16px-radius items), every split becomes one column, the hero photo moves below the copy at 4:3, the direct line stops being sticky, and the process line turns vertical; at 640px radii step down (tiles 22px, sheets 32px), the hero photo stays 4:3 with a 12px caption, actions stack full-width, the alarm strip becomes a 22px tile with the number pill below the sentence, and a fixed green call pill appears at the bottom once the hero call button has scrolled away.
 
 ### Named Rules
+**The 44px Rule.** Anything you can tap is at least 44px tall: nav links, the menu pill, buttons, the alarm number pill, the direct-line mailto, footer links (50px items in the mobile menu, 54px for the mobile call pill).
+
 **The Sheet Rule.** Every section is a sheet: rounded top corners at the sheet radius, a 1px Seam on top, and a negative top margin equal to that radius so it overlaps the previous sheet. Never a flat full-bleed band, never a gap between sections.
 
 ### Photography
@@ -366,18 +374,19 @@ Mostly flat, with one lift. Depth comes from four tonal steps (ground, ground-2,
 
 ## Shapes
 
-Soft instrument geometry on a five-step scale, chosen by role, not by size:
+Soft instrument geometry, chosen by role, not by size. Two roles step down at 640px (the build swaps `--r-lg` and `--r-sheet` there), so the scale records both values:
 - **Field** (`sm`, 10px): text inputs and textareas; also the focus-ring corner.
 - **Inner item** (`md`, 16px): the form message, mobile menu items.
-- **Tile** (`lg`, 28px; 22px on phones): domain cards, value cards, photos, the direct-line panel, the form panel, the mobile menu.
-- **Sheet** (`sheet`, 44px; 32px on phones): the top corners of every section and the footer.
-- **Pill** (`pill`): everything pressed or tagged (header, nav links and the sliding nav pill, buttons, the call, choices, op chips, equipment-code tags, caption chips, the alarm strip, the annunciator, the progress line, the green value bar, the pipe).
-- **Circle** (`full`): status lamps and sector stations.
+- **Tile** (`lg`, 28px; `lg-mobile`, 22px on phones): domain cards, value cards, photos, the direct-line panel, the form panel, the mobile menu, the alarm strip on phones.
+- **Nested** (`nested`, 20px; `nested-mobile`, 14px on phones): a photo inset inside a domain card, always computed as tile − 8px, never set by hand.
+- **Sheet** (`sheet`, 44px; `sheet-mobile`, 32px on phones): the top corners of every section and the footer.
+- **Pill** (`pill`): everything pressed or tagged (header, nav links and the sliding nav pill, buttons, the call, choices, equipment-code tags, caption chips, the alarm strip, the annunciator, the progress line, the green value bar, the process line).
+- **Circle** (`full`): lamps and sector stations.
 
-Strokes: the process pipe is a 6px Seam pill with a 2px green dash flow; station symbols are 2.6px round-capped strokes inside 88px circles. Icons and direction markers are drawn SVG (the forward arrow is a round-capped 16×12 mask), never typographic glyphs or filled pictograms.
+Strokes: the process line is a solid 4px Running Green pill over a 6px Seam track; station symbols are 2.6px round-capped strokes inside 88px circles. Icons and direction markers are drawn SVG (the forward arrow is a round-capped 16×12 mask), never typographic glyphs or filled pictograms.
 
 ### Named Rules
-**The Nested Radius Rule.** A rounded thing inside a rounded thing takes the outer radius minus the inset: a photo inside a domain card is `lg − 8px`. Never the same radius inside and out, never square inside round.
+**The Nested Radius Rule.** A rounded thing inside a rounded thing takes the outer radius minus the inset: a photo inside a domain card is `lg − 8px` (20px, 14px on phones), including the clip-path it unmasks from. Never the same radius inside and out, never square inside round.
 
 **The Pill-for-Touch Rule.** If you press it or it labels a state, it is a pill. If it holds content, it is a tile. Only fields take the small 10px corner.
 
@@ -390,52 +399,56 @@ Soft, thumb-sized pills: a label, and either the phone number or a drawn forward
 - **Hover / Focus / Active:** fill steps to Running Green Pressed Up over 0.25s and the button takes the lift; press scales to 0.97 (the compact call to 0.96); focus is a 2px Running Green outline at 3px offset.
 - **Secondary (line):** transparent with a 1px Pipe Grey outline and Screen Ink text; on hover a Panel Raised fill sweeps in from the left (0.45s), the outline turns Running Green and the arrow nudges 5px forward.
 - **Disabled / sending:** 60% opacity, progress cursor.
-- **Compact call:** header version, 12px × 20px, UI size, tabular numerals.
+- **Compact call:** header version, 12px × 20px, UI size, number in mono.
 
 ### Inputs / Fields
 - **Style:** Graphite Ground well, 1px Control Edge, 10px radius, 13px × 16px padding, Body text, Placeholder Grey hints, green caret, inside the Panel form tile. Labels sit above in the Label style.
 - **Hover / Focus:** edge to Readout Grey on hover; on focus a Running Green border plus the 4px green focus halo.
-- **Error:** edge turns Alarm Amber; the form message is an amber-framed 16px-radius box. Success: Running Green frame on Run Tint.
+- **Required / optional:** required labels end with a Screen Ink "*", explained once by a Small "* Champs obligatoires" note at the top of the form; optional labels carry "(facultatif)". Required fields come first (Nom and Téléphone, then Votre besoin), optional ones after.
+- **Error:** edge turns Alarm Amber and an amber Small error line appears directly under the field, linked by `aria-describedby`; the form message above the submit button is an amber-framed 16px-radius summary. Success: Running Green frame on Run Tint.
 
-### Choices (radio / checkbox pills)
+### Choices (checkbox pills)
 - **Style:** Graphite Raised pill, 1px Control Edge, 10px × 16px, native control tinted Running Green.
 - **State:** hover edge to Readout Grey; press scales to 0.97; checked edge Running Green on Run Tint.
 
 ### Header and navigation
-A floating Graphite Raised pill with a blur, holding the logo lockup, the nav, the location readout and the compact call. Nav links are pills in Label style, Readout Grey turning Screen Ink; a Panel Raised **nav pill** with an inset Seam ring slides (0.5s) under the hovered link and returns to the current section's link. Once scrolled, the header firms to 94% and takes the lift. On mobile a Menu pill opens a dropdown tile that fades and grows from 98% scale.
+A floating Graphite Raised pill with a blur, holding the logo lockup, the nav, the location readout (plain text, no lamp) and the compact call. Nav links are 44px pills in Label style, Readout Grey turning Screen Ink; a Panel Raised **nav pill** with an inset Seam ring slides (0.5s) under the hovered link and returns to the current section's link. Once scrolled, the header firms to 94% and takes the lift. On mobile a Menu pill opens a dropdown tile that fades and grows from 98% scale.
 
 ### Hero photo tile (signature)
-A full-height rounded field photo with a blurred caption pill (green lamp plus a Label-style description) in the lower left. It is what opens on load and drifts gently with scroll (see Motion).
+A full-height rounded field photo with a blurred caption pill (a Label-style description, no lamp; Label Small on phones) in the lower left. It is what opens on load and drifts gently with scroll (see Motion).
 
 ### Domain cards
-Four separate Panel tiles (28px, 1px Seam, 12px inset). Each opens with a 4:3 field photo inset in the card at `lg − 8px`, with the equipment code (mono tag in Running Green on a blurred Ground pill, followed by a green lamp) top-left. Then the Title, a Body Small description in Readout Grey, and op chips (Panel Raised pills, Label style) at the bottom. Hover lifts the card 6px with the lift shadow and a Pipe Grey edge, and pushes the photo in to 1.06; a targeted card turns Running Green-edged on Run Tint.
+Four separate Panel tiles (28px, 1px Seam, 12px inset). Each opens with a 4:3 field photo inset in the card at `lg − 8px`, with the equipment code (mono tag in Running Green on a blurred Ground pill, followed by a green lamp) top-left. Then the Title and a Body Small description in Readout Grey; nothing repeats the description as chips. Hover lifts the card 6px with the lift shadow and a Pipe Grey edge, and pushes the photo in to 1.06; a targeted card turns Running Green-edged on Run Tint.
 
 ### Value cards
 Three Panel tiles under the about prose, each headed by a 28 × 4px green pill bar, then a Title Small name and a Body Small line. Hover raises 4px and edges the card in Dim Run.
 
 ### Process line (sectors)
-Three stations on a 6px Seam pill pipe: each an 88px Panel circle around a stroked symbol, then a Title name and a short Readout Grey line. On entering view the green flow wipes along the pipe and the stations scale up from 0.86 and light from grey to green in sequence. Vertical on tablets and phones.
+Three stations on a 6px Seam track carrying a solid 4px Running Green line: each an 88px Panel circle around a stroked symbol, then a Title name and a short Readout Grey line. On entering view the green line wipes in once and the stations scale up from 0.86 and light from grey to green in sequence. Vertical on tablets and phones.
 
 ### Alarm strip and direct line (urgency)
-The two amber objects. The **alarm strip** is a Graphite Raised pill under the hero: an amber lamp, one sentence, and the phone number in amber mono on a 10% amber pill (20% on hover). The **direct-line panel** is a Panel tile edged in 45% amber, opening with an amber annunciator pill, the phone number in large mono (hover to amber), the technician's name, a green mailto, and a seam-separated zone line. It stays in view while the form scrolls.
+The two amber objects. The **alarm strip** is a Graphite Raised pill under the hero: an amber lamp, one sentence, and the phone number in amber mono on a 10% amber pill (20% on hover). The **direct-line panel** is a Panel tile edged in 45% amber, opening with an amber annunciator pill, the phone number in large mono (hover to amber), the technician's name, a green 44px mailto, and a seam-separated zone line. It stays in view while the form scrolls.
+
+### Footer
+The last sheet: logo lockup, then the phone number (mono) and email in Screen Ink, then secondary links in Readout Grey turning green on hover; every link is 44px tall.
 
 ### Mobile call bar
-A fixed Running Green pill 12px from the bottom and sides, 54px tall, Run Ink text; slides up only after the hero call button leaves the viewport.
+A fixed Running Green pill 12px from the bottom and sides, 54px tall, Run Ink text with the number in mono, carrying the lift; slides up only after the hero call button leaves the viewport.
 
 ### Motion
-Two curves: `ease` (cubic-bezier(.16,1,.3,1)) for nearly everything (rises, opens, slides, settles); `ease-io` (cubic-bezier(.65,0,.35,1)) for the linear-feeling pipe-flow wipe.
+Two curves: `ease` (cubic-bezier(.16,1,.3,1)) for nearly everything (rises, opens, slides, settles); `ease-io` (cubic-bezier(.65,0,.35,1)) for the process-line wipe.
 - **Power-up (hero):** the header drops in from −14px; the hero photo opens from a rounded inset clip (12% / 10%) to full over 1.1s and settles from scale 1.12 over 1.8s; the headline lines rise from their masks (0.8s, from 0.15s, 80ms stagger); then the lede (0.55s), actions (0.65s), alarm strip (0.85s) and caption pill (1s) fade-rise 14px.
 - **Parallax:** while the hero is in view, its photo drifts down at 12% of scroll and zooms gently from 1.04 to about 1.10.
-- **Scroll reveals:** sheet heads, about blocks and the contact grid fade-rise 28px (0.8–1s); domain cards rise 40px in a wave with 110ms stagger, their photos unmasking from a rounded inset and settling from 1.12 (1.1–1.4s); value cards rise 24px with 100ms stagger; the pipe flow wipes in (1.4s, ease-io) while stations light at 0 / 0.4 / 0.8s.
+- **Scroll reveals:** sheet heads, about blocks and the contact grid fade-rise 28px (0.8–1s); domain cards rise 40px in a wave with 110ms stagger, their photos unmasking from a rounded inset and settling from 1.12 (1.1–1.4s); value cards rise 24px with 100ms stagger; the green process line wipes in once (1.4s, ease-io) while stations light at 0 / 0.4 / 0.8s.
 - **Touch:** card lift 6px (0.5s); nav pill slide 0.5s; outline-button sweep 0.45s; arrow nudge 0.35s; press-scale 0.96–0.97; colour and edge changes 0.25s.
-- **Loops:** only the pipe flow (1.8s linear). Lamps never pulse or blink.
+- **Loops:** none. Every motion plays once; lamps never pulse or blink.
 - **Reduced motion:** no power-up, no parallax, no reveals; everything is in place immediately and state changes are instant.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** build every surface from the four graphite steps (`ground`, `ground-2`, `panel`, `panel-2`) and edge tiles and sheets with a 1px `seam`.
-- **Do** pick radius by role: 10px fields, 16px inner items, 28px tiles, 44px sheets, pills for anything pressed or tagged, circles for lamps and stations.
+- **Do** pick radius by role: 10px fields, 16px inner items, 28px tiles (22px on phones), 44px sheets (32px on phones), pills for anything pressed or tagged, circles for lamps and stations; always through the tokens so the phone step applies.
 - **Do** nest radii: an inset photo takes the card radius minus its inset.
 - **Do** use Running Green only for running / covered state, live feedback, focus and the primary action.
 - **Do** reserve Alarm Amber, including its tint pills, for the emergency line and for faults.
@@ -447,6 +460,8 @@ Two curves: `ease` (cubic-bezier(.16,1,.3,1)) for nearly everything (rises, open
 - **Do** use the single `--lift` shadow, and only for what floats or responds to touch.
 - **Do** show everything in place under `prefers-reduced-motion`.
 - **Do** keep a call action within reach at every scroll position on phones.
+- **Do** make every tap target at least 44px tall.
+- **Do** mark required fields with "*" and optional ones with "(facultatif)", and put each field's error directly under it.
 
 ### Don't:
 - **Don't** add coloured shadows, glows or neon, or any shadow other than the lift and the field focus halo.
@@ -457,4 +472,5 @@ Two curves: `ease` (cubic-bezier(.16,1,.3,1)) for nearly everything (rises, open
 - **Don't** put eyebrow labels or kickers above section headings; labels belong to instruments (captions, tags, annunciators).
 - **Don't** use typographic glyphs as icons or arrows; draw them as SVG.
 - **Don't** mix square corners into the panel, or give an inner element the same radius as its container.
-- **Don't** pulse, blink or loop anything except the pipe flow; no bounce or spring easing.
+- **Don't** pulse, blink or loop anything; no bounce or spring easing.
+- **Don't** put a green lamp on a static fact, or repeat a card's description as chips.
