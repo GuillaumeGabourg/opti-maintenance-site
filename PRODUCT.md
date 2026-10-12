@@ -52,6 +52,7 @@ Undecided: exact intervention radius, years of experience / career history, SIRE
 - Contact: Malo Maheas, 06 87 61 97 39, maheas@opti-maintenance.fr; Facebook page and LinkedIn page exist.
 - Facebook photos (downloaded 2026-10-11, cropped, in assets/photos/): biogas cogeneration engine, belt drive, inductive sensor, motor + gear unit, PLC program (TIA Portal), engine diagnostic HMI. Client consent for web use still to be confirmed. A SCADA screenshot with red annotations was left out.
 - No testimonials, client names, project counts, certifications or years of experience are known. Never invent them.
+- No portrait: the client is not expected to want his face on the site (decided 2026-10-12). Prove the person through field photos and first-person copy instead.
 
 ## Product Principles
 
