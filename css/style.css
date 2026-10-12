@@ -215,12 +215,12 @@ h1 em{font-style:normal;color:var(--run)}
 .foot a:hover{color:var(--run)}
 .mob-call{display:none}
 /* Facebook : pictogramme monochrome aux couleurs du site */
-.fb-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;color:var(--ink-2);background:var(--panel-2);border:1px solid var(--seam);transition:color .25s,border-color .25s,transform .15s var(--ease)}
-.fb-btn svg{width:20px;height:20px;fill:currentColor}
-.fb-btn:hover{color:var(--run);border-color:var(--run-dim)}
+.fb-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;color:var(--run);background:var(--run-tint);border:1px solid var(--run-dim);transition:color .25s,background .25s,border-color .25s,transform .15s var(--ease)}
+.fb-btn svg{width:24px;height:24px;fill:currentColor}
+.fb-btn:hover{color:var(--run-ink);background:var(--run);border-color:var(--run)}
 .fb-btn:active{transform:scale(.94)}
-.fb-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--ink-2);text-decoration:none;transition:color .25s}
-.fb-link svg{width:20px;height:20px;fill:currentColor;flex-shrink:0;transition:transform .35s var(--ease)}
+.fb-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--ink);text-decoration:none;transition:color .25s}
+.fb-link svg{width:26px;height:26px;fill:var(--run);flex-shrink:0;transition:transform .35s var(--ease)}
 .fb-link:hover{color:var(--run)}
 .fb-link:hover svg{transform:scale(1.1)}
 .direct .fb-link{margin-top:8px;font-weight:600}
