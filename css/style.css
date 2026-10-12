@@ -122,8 +122,8 @@ h1 em{font-style:normal;color:var(--run)}
 .band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(32px,5vw,80px);align-items:end;margin-bottom:clamp(40px,5vw,64px)}
 .band h2{font-stretch:66%;font-weight:800;font-size:clamp(38px,4.4vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.005em;text-wrap:balance}
 .band-head p{color:var(--ink-2);font-size:clamp(19px,1.35vw,21px);line-height:1.65;max-width:56ch;text-wrap:pretty}
-#contact .band-head,#secteurs .band-head{display:block}
-#contact .band-head p,#secteurs .band-head p{margin-top:18px;max-width:none;text-wrap:balance}
+#contact .band-head,#secteurs .band-head,#domaines .band-head{display:block}
+#contact .band-head p,#secteurs .band-head p,#domaines .band-head p{margin-top:18px;max-width:none;text-wrap:balance}
 
 /* domaines */
 .plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
