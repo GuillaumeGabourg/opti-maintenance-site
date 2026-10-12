@@ -7,9 +7,8 @@
   if (!calm) {
     root.classList.add("boot");
     const start = () => requestAnimationFrame(() => requestAnimationFrame(() => { root.classList.add("on"); root.classList.remove("boot"); }));
-    const img = document.querySelector(".shot img");
-    if (img && !img.complete) { img.addEventListener("load", start, { once: true }); setTimeout(start, 1200); }
-    else start();
+    // Démarre tout de suite : sur réseau lent, le texte ne doit pas attendre la photo
+    start();
   }
 
   // --- Défilement : progression, en-tête, profondeur de la photo du hero ---
@@ -70,12 +69,12 @@
   pill.setAttribute("aria-hidden", "true");
   nav.prepend(pill);
   const movePill = () => {
-    const a = links.find(l => l.getAttribute("aria-current") === "true") || links[0];
+    const a = links.find(l => l.hasAttribute("aria-current")) || links[0];
     pill.style.width = a.offsetWidth + "px";
     pill.style.transform = `translateX(${a.offsetLeft}px)`;
   };
   const setCurrent = id => {
-    links.forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === id ? "true" : "false"));
+    links.forEach(a => a.getAttribute("href") === id ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"));
     movePill();
   };
   if ("IntersectionObserver" in window) {
@@ -107,26 +106,43 @@
   const msg = form.querySelector(".form-msg");
   const submit = form.querySelector("button[type=submit]");
 
+  const errs = {
+    nom: "Indiquez votre nom.",
+    telephone: "Indiquez un numéro pour que je puisse vous rappeler.",
+    message: "Décrivez votre besoin en quelques mots : équipement, symptôme, lieu.",
+    email: "Cet e-mail semble incomplet (exemple : nom@entreprise.fr)."
+  };
+  const setErr = (f, text) => {
+    const box = document.getElementById(f.getAttribute("aria-describedby"));
+    f.setAttribute("aria-invalid", text ? "true" : "false");
+    if (box) box.textContent = text || "";
+  };
   function check() {
     let firstBad = null;
     form.querySelectorAll("[required]").forEach(f => {
       const bad = !f.value.trim();
-      f.setAttribute("aria-invalid", bad);
+      setErr(f, bad ? errs[f.name] : "");
       if (bad && !firstBad) firstBad = f;
     });
     const mail = form.elements.email;
-    if (mail.value && !mail.checkValidity()) { mail.setAttribute("aria-invalid", "true"); firstBad = firstBad || mail; }
-    else mail.removeAttribute("aria-invalid");
+    const badMail = mail.value && !mail.checkValidity();
+    setErr(mail, badMail ? errs.email : "");
+    if (badMail && !firstBad) firstBad = mail;
     return firstBad;
   }
-  form.addEventListener("input", e => { if (e.target.getAttribute("aria-invalid") === "true") e.target.setAttribute("aria-invalid", !e.target.value.trim()); });
+  form.addEventListener("input", e => {
+    const f = e.target;
+    if (f.getAttribute("aria-invalid") !== "true") return;
+    if (f.name === "email") setErr(f, f.value && !f.checkValidity() ? errs.email : "");
+    else setErr(f, f.value.trim() ? "" : errs[f.name]);
+  });
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
     msg.className = "form-msg";
     const bad = check();
     if (bad) {
-      msg.textContent = "Il manque votre nom, votre téléphone ou la description du besoin (ou l'e-mail est mal saisi).";
+      msg.textContent = "Certains champs sont à compléter : voir les messages sous chaque champ.";
       bad.focus();
       return;
     }

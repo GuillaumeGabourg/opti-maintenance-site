@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://opti-maintenance.fr/sitemap.xml
+Sitemap: https://guillaumegabourg.github.io/opti-maintenance-site/sitemap.xml
